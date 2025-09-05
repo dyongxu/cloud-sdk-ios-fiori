@@ -3,6 +3,17 @@ import Foundation
 private class CurrentBundleFinder {}
 
 extension Bundle {
+    /// Accessor to the resource bundle of FioriSwiftUICore.
+    static var fioriCoreAccessor: Bundle {
+        // resolves to the one from FioriSwiftUICore
+        let bundleName = "FioriSwiftUI_FioriSwiftUICore"
+        if let bundle = patchToFindBundle(with: bundleName) {
+            return bundle
+        }
+        
+        return Bundle.module
+    }
+    
     static var accessor: Bundle {
         #if SWIFT_PACKAGE
 
